@@ -1,0 +1,35 @@
+
+// This will be comments 
+
+// I will be programming a nextjs latest 
+// using shatty 
+// Inline fold to hide the classnames 
+// upload thing to upload files 
+// put all files in a (root) and in a (aith) folder 
+// create specific layouts different roots 
+// The components folder has shared comoponets and ui components
+// Auth will be setup with clerk 
+// with clerk you can create an auth with several providers difining a middleware that control webhooks 
+
+// UI Elements can get installed and directly imported 
+// like a sheet components, separator, toggle nav bar 
+
+// We can create a dynamic rooting system using constants and bringing them to the application
+// The constants are then called at running and identified using the path
+
+// Create a Hero using only tailwind classes 
+
+// Database 
+// Moongoogse and Mongo DB 
+
+
+
+
+export default function Home(){
+   
+    return(
+    
+
+    )
+}
+
