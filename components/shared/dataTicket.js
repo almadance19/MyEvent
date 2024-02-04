@@ -7,6 +7,7 @@ import { useEffect } from "react";
 //import PdfButton from "./PdfButton";
 import PrintButton from './PrintPage';
 import Image from 'next/image';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 
 
 
@@ -70,6 +71,12 @@ export default function FormDataDisplay({data}) {
 
   return (
     <>
+  <Form {...form}>
+    <form className="flex flex-col gap-5">
+
+    </form>
+
+  </Form>
   <div id="printableContent" className="container mx-auto p-4">
   <form className="bg-white border border-gray-300 p-4 rounded-md">
   <div className='content-justify-center items-center '>
