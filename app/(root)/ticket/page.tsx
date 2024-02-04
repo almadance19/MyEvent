@@ -1,7 +1,8 @@
 import EventForm from "@/components/shared/EventForm"
 import { auth } from "@clerk/nextjs";
+import Ticketshell from "@/components/shared/Ticketshell"
 
-const CreateEvent = () => {
+const TicketPage = () => {
   const { userId } = auth();
   const userIdAsString: string = userId as string;
   console.log(userIdAsString)
@@ -13,11 +14,10 @@ const CreateEvent = () => {
       </section>
 
       <div className="wrapper my-8">
-         <h1>user: {userIdAsString}</h1>
-         <EventForm userId={userIdAsString} type="Create" /> 
+         <Ticketshell userId={userIdAsString}/> 
       </div>
     </>
   )
 }
 
-export default CreateEvent
+export default TicketPage

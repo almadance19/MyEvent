@@ -52,6 +52,8 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
     let uploadedImageUrl = values.imageUrl;
 
     console.log("values",values)
+    console.log("userId",userId)
+    
 
     if(files.length > 0) {
       const uploadedImages = await startUpload(files)
@@ -61,7 +63,10 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
       }
 
       uploadedImageUrl = uploadedImages[0].url
+    } else {
+      uploadedImageUrl= "/assets/images/hero.png";
     }
+
 
     if(type === 'Create') {
       try {
