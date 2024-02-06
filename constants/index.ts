@@ -21,7 +21,7 @@ export const eventDefaultValues = {
   eventName: '',
   eventKey: '',
   eventEmail: '',
-  createdAt: Date,
+  createdAt: new Date(),
   eventDescription: '',
   eventDate: '',
   startDateTime: new Date(),
