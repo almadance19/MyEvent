@@ -22,18 +22,14 @@ export type CreateEventParams = {
   price: string;
   isFree: boolean;
   imageUrl: string;
-  eventURL: string;
   eventName: string;
   eventKey: string;
   eventEmail: string;
-  eventFon:string;
   createdAt: Date;
   eventDescription: string;
-  eventDate: string;
   startDateTime: Date;
   endDateTime: Date;
   eventAdress: string;
-  eventFotoURL: string;
   eventWebsite: string;
   categoryId: string
   }
@@ -47,18 +43,14 @@ export type UpdateEventParams = {
     price: string;
     isFree: boolean;
     imageUrl: string;
-    eventURL: string;
     eventName: string;
     eventKey: string;
     eventEmail: string;
-    eventFon:string;
     createdAt: Date;
     eventDescription: string;
-    eventDate: string;
     startDateTime: Date;
     endDateTime: Date;
     eventAdress: string;
-    eventFotoURL: string;
     eventWebsite: string;
     categoryId: string
   }
@@ -95,18 +87,14 @@ export type Event = {
   price: string;
   isFree: boolean;
   imageUrl: string;
-  eventURL: string;
   eventName: string;
   eventKey: string;
   eventEmail: string;
-  eventFon:string;
   createdAt: Date;
   eventDescription: string;
-  eventDate: string;
   startDateTime: Date;
   endDateTime: Date;
   eventAdress: string;
-  eventFotoURL: string;
   eventWebsite: string;
   categoryId: string
   creator: {
