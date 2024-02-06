@@ -18,17 +18,24 @@ export type UpdateUserParams = {
 // ====== EVENT PARAMS
 export type CreateEventParams = {
   userId: string
-  event: {
-    title: string
-    description: string
-    location: string
-    imageUrl: string
-    startDateTime: Date
-    endDateTime: Date
-    categoryId: string
-    price: string
-    isFree: boolean
-    url: string
+  event: {  
+  price: string;
+  isFree: boolean;
+  imageUrl: string;
+  eventURL: string;
+  eventName: string;
+  eventKey: string;
+  eventEmail: string;
+  eventFon:string;
+  createdAt: Date;
+  eventDescription: string;
+  eventDate: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  eventAdress: string;
+  eventFotoURL: string;
+  eventWebsite: string;
+  categoryId: string
   }
   path: string
 }
@@ -37,16 +44,23 @@ export type UpdateEventParams = {
   userId: string
   event: {
     _id: string
-    title: string
-    imageUrl: string
-    description: string
-    location: string
-    startDateTime: Date
-    endDateTime: Date
+    price: string;
+    isFree: boolean;
+    imageUrl: string;
+    eventURL: string;
+    eventName: string;
+    eventKey: string;
+    eventEmail: string;
+    eventFon:string;
+    createdAt: Date;
+    eventDescription: string;
+    eventDate: string;
+    startDateTime: Date;
+    endDateTime: Date;
+    eventAdress: string;
+    eventFotoURL: string;
+    eventWebsite: string;
     categoryId: string
-    price: string
-    isFree: boolean
-    url: string
   }
   path: string
 }
@@ -78,16 +92,24 @@ export type GetRelatedEventsByCategoryParams = {
 
 export type Event = {
   _id: string
-  title: string
-  description: string
-  price: string
-  isFree: boolean
-  imageUrl: string
-  location: string
-  startDateTime: Date
-  endDateTime: Date
-  url: string
-  organizer: {
+  price: string;
+  isFree: boolean;
+  imageUrl: string;
+  eventURL: string;
+  eventName: string;
+  eventKey: string;
+  eventEmail: string;
+  eventFon:string;
+  createdAt: Date;
+  eventDescription: string;
+  eventDate: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  eventAdress: string;
+  eventFotoURL: string;
+  eventWebsite: string;
+  categoryId: string
+  creator: {
     _id: string
     firstName: string
     lastName: string
