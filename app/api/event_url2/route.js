@@ -14,7 +14,7 @@ export const POST = async (request) => {
         await connectToDB();
         // check if user already exists
 
-        let EventExists = await Event.findOne({ eventURL: eventURL });
+        let EventExists = await Event.findOne({ _id: eventURL });
 
         // const EventExists = await Event.findOne({ eventURL: eventURL }).select({
         //     eventName: 1, // Exclude
@@ -31,7 +31,7 @@ export const POST = async (request) => {
 
         } else {
       
-
+            let OrganiserId = EventExists.creator;
             let eventKey = EventExists.eventKey;
             console.log("Event Key",eventKey);
 
@@ -81,7 +81,7 @@ export const POST = async (request) => {
                             currency: stripeResponse["currency"],
                           };
         
-                          EventExists = await Event.findOne({ eventURL: eventURL }).select({
+                          EventExists = await Event.findOne({ _id: eventURL }).select({
                             eventKey: 0, // Exclude
                              });
                   
@@ -91,14 +91,16 @@ export const POST = async (request) => {
                           if (CheckoutData) {
                                 console.log("CheckoutData exist");
                                   if (type === "org") {
-                                    CheckoutData.creator = creator;
+                                    //CheckoutData.creator = creator;
                                   } else if (type === "buyer") {
-                                    CheckoutData.creator = creator;
+                                    //CheckoutData.creator = creator;
                                   }
                     
                               CheckoutData.eventURL = eventURL ;
                               CheckoutData.eventName = EventExists.eventName ;
                               CheckoutData.eventOrganiserId = EventExists.creator ;
+                              ///
+
         
                             console.log("Saving Ticket in DB...", CheckoutData);
                     

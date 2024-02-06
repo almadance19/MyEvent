@@ -4,14 +4,18 @@ import React from 'react';
 //import { CldImage } from 'next-cloudinary';
 import QRCode from 'qrcode.react';
 import { useEffect } from "react";
-//import PdfButton from "./PdfButton";
 import PrintButton from './PrintPage';
 import Image from 'next/image';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { formatDateTime } from '@/lib/utils';
+import { Button } from "@/components/ui/button"
 
-
+/// GET STRIPE ID FROM METADATA
+/// GET STRIPE ID FROM METADATA
+/// GET STRIPE ID FROM METADATA
 
 export default function FormDataDisplay({data}) {
+
+  console.log(data);
   // Format the date string
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -66,23 +70,18 @@ export default function FormDataDisplay({data}) {
   const handleEmailClick = async () => {
     await handleSendEmail();
   };
-    
+
  
 
   return (
     <>
-  <Form {...form}>
-    <form className="flex flex-col gap-5">
 
-    </form>
-
-  </Form>
-  <div id="printableContent" className="container mx-auto p-4">
-  <form className="bg-white border border-gray-300 p-4 rounded-md">
-  <div className='content-justify-center items-center '>
-  {data.EventExists.eventFotoURL !== undefined ? (
+  <div id="printableContent" className="container border m-3 mx-auto p-4">
+  <form className="bg-white border border-gray-300 p-4 rounded-md m-4">
+  <div className='content-justify-center items-center flex flex-col gap-5'>
+  {data.EventExists.imageUrl !== undefined ? (
     <Image
-        src="/assets/images/hero.png"
+        src={data.EventExists.imageUrl}
         width="300"
         height="300"
         crop="fill"
@@ -102,55 +101,97 @@ export default function FormDataDisplay({data}) {
         />
   ) }
   </div>
-  <h1 className="text-3xl font-bold mb-4">{data.EventExists.eventName}</h1>
-  <h2 className="text-2xl font-bold mb-4">{data.EventExists.eventDate}</h2>
-  <p className=" font-bold mb-4">{data.EventExists.eventAdress}</p>
-  <p className=" font-bold mb-4">Details: {data.EventExists.eventDescription}</p>
-  <p className=" font-bold mb-4">Website:</p>
-  <p className=" font-bold mb-4">Telefon:</p>
+  <div className='flex flex-col gap-5 md:flex-row m-4'>
+  <h1 className="text-4xl font-bold mb-4 ml-4">{data.EventExists.eventName}</h1>
+  </div>
+  <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
+    <Image
+                          src="/assets/icons/location-grey.svg"
+                          alt="calendar"
+                          width={24}
+                          height={24}
+                        />
+    <p className="mb-4 ml-4">{data.EventExists.eventAdress}</p>
+  </div>
+  <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
+  <p className=" mb-4 ml-4">Website: {data.EventExists.eventWebsite}</p>
+  </div>
+  <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
+  <p className=" mb-4 ml-4">Phone: {data.EventExists.eventWebsite}</p>
+  </div>
+  <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
+  <p className=" mb-4 ml-4">Details: {data.EventExists.eventDescription}</p>
   <br />
-  <div className="mb-4">
+  </div>
+  <div className='flex gap-2 md:gap-3 m-4'>
+              <Image src="/assets/icons/calendar.svg" alt="calendar" width={32} height={32} />
+              <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
+                <p>
+                  {formatDateTime(data.EventExists.startDateTime).dateOnly} - {' '}
+                  {formatDateTime(data.EventExists.startDateTime).timeOnly}
+                </p>
+                <p>
+                  {"/ "+formatDateTime(data.EventExists.endDateTime).dateOnly} -  {' '}
+                  {formatDateTime(data.EventExists.endDateTime).timeOnly}
+                </p> 
+                                {/* <p>
+                  {data.CheckoutData.startDateTime}
+                </p>
+                <p>
+                  {' '}
+                  - {data.CheckoutData.endDateTime}
+                </p> */}
+              </div>
+  </div>
+  <div>
+  </div>
+  <div className='content-justify-center items-center m-4 gap-5'>
+  <div className="mb-4 ml-4 ">
   <label className="block text-gray-600 mb-2 font-bold">Payment Date</label>
   <p className="text-gray-800">{formatDate(data.CheckoutData.created_at)}</p>
 </div>
-<div className="mb-4">
+<div className="mb-4 ml-4">
   <label className="block text-gray-600 mb-2 font-bold">Email ID</label>
   <p className="text-gray-800">{data.CheckoutData.email}</p>
 </div>
-<div className="mb-4">
+<div className="mb-4 ml-4">
   <label className="block text-gray-600 mb-2 font-bold">Ticket Name</label>
   <p className="text-gray-800">{data.CheckoutData.name_ticket}</p>
 </div>
-<div className="mb-4">
+<div className="mb-4 ml-4">
   <label className="block text-gray-600 mb-2 font-bold">Payer Name</label>
   <p className="text-gray-800">{data.CheckoutData.name_payment}</p>
 </div>
-<div className="mb-4">
+<div className="mb-4 ml-4">
   <label className="block text-gray-600 mb-2 font-bold">Ticket Type</label>
   <p className="text-gray-800">{data.CheckoutData.ticket_type}</p>
 </div>
-<div className="mb-4">
+<div className="mb-4 ml-4">
   <label className="block text-gray-600 mb-2 font-bold">Payment Amount</label>
   <p className="text-gray-800">{data.CheckoutData.pre_total} EUR</p>
 </div>
-<div className="mb-4">
+<div className="mb-4 ml-4">
   <label className="block text-gray-600 mb-2 font-bold">Ticket Nr</label>
   <p className="text-gray-800">{data.CheckoutData.ticket_nr}</p>
 </div>
-
+</div>
           <br />
-          <div className="mb-4 justify-center items-center">
+          <div className="content-justify-center items-center flex flex-col gap-5 mb-4">
     <QRCode value={`https://firstnextjs-wine.vercel.app/ticket?event=${data.CheckoutData.eventURL}&id=${data.CheckoutData.ticket_id}&type=org`} size={200} />
   </div>
   </form>
   </div>  
-  <div className='p-4'>
-      <button className='btn btn-active btn-secondary' onClick={handleEmailClick}>Send Ticket to Email</button>
+  <div className='mb-4'>
+      <Button 
+            variant=""
+            onClick={handleEmailClick}>Send Ticket to Email</Button>
       {/* Your other page content */}
+
   </div>
-  <div className='p-4'>
+  <div className='mb-4'>
   <PrintButton data={data} />
   </div>
     </>
   );
 };
+

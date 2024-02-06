@@ -23,7 +23,7 @@ const getCategoryByName = async (name: string) => {
 
 const populateEvent = (query: any) => {
   return query
-    .populate({ path: 'organizer', model: User, select: '_id firstName lastName' })
+    .populate({ path: 'creator', model: User, select: '_id firstName lastName' })
     .populate({ path: 'category', model: Category, select: '_id name' })
 }
 
@@ -32,14 +32,18 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
   try {
     await connectToDatabase()
 
+    console.log("user", userId)
+
     //const organizer = await User.findById(userId)
     const organizer = await User.findOne({ clerkId: userId })
+
+    console.log("org",organizer)
 
     if (!organizer) throw new Error('Organizer not found')
 
     const organizerId= organizer._id;
 
-    const newEvent = await Event.create({ ...event, category: event.categoryId, organizer: organizerId })
+    const newEvent = await Event.create({ ...event, category: event.categoryId, creator: organizerId })
     revalidatePath(path)
 
     return JSON.parse(JSON.stringify(newEvent))

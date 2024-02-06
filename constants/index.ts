@@ -14,14 +14,19 @@ export const headerLinks = [
 ]
 
 export const eventDefaultValues = {
-  title: '',
-  description: '',
-  location: '',
-  imageUrl: '',
-  startDateTime: new Date(),
-  endDateTime: new Date(),
-  categoryId: '',
   price: '',
   isFree: false,
-  url: '',
+  imageUrl: '',
+  eventURL: '',
+  eventName: '',
+  eventKey: '',
+  eventEmail: '',
+  createdAt: Date,
+  eventDescription: '',
+  eventDate: '',
+  startDateTime: new Date(),
+  endDateTime: new Date(),
+  eventAdress: '',
+  eventFotoURL: '',
+  eventWebsite: '',
 }

@@ -2,34 +2,83 @@ import { Document, Schema, model, models } from "mongoose";
 
 export interface IEvent extends Document {
   _id: string;
-  title: string;
-  description?: string;
-  location?: string;
-  createdAt: Date;
-  imageUrl: string;
-  startDateTime: Date;
-  endDateTime: Date;
+  category: { _id: string, name: string }
+  creator: { _id: string, firstName: string, lastName: string }
   price: string;
   isFree: boolean;
-  url?: string;
-  category: { _id: string, name: string }
-  organizer: { _id: string, firstName: string, lastName: string }
+  imageUrl: string;
+  eventURL: string;
+  eventName: string;
+  eventKey: string;
+  eventEmail: string;
+  eventFon:string;
+  createdAt: Date;
+  eventDescription: string;
+  eventDate: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  eventAdress: string;
+  eventFotoURL: string;
+  eventWebsite: string;
 }
 
-const EventSchema = new Schema({
-  title: { type: String, required: true },
-  description: { type: String },
-  location: { type: String },
-  createdAt: { type: Date, default: Date.now },
-  imageUrl: { type: String, required: true },
-  startDateTime: { type: Date, default: Date.now },
-  endDateTime: { type: Date, default: Date.now },
+
+const EventSchema = new Schema({ 
+  category: { type: Schema.Types.ObjectId, ref: 'Category' },
   price: { type: String },
   isFree: { type: Boolean, default: false },
-  url: { type: String },
-  category: { type: Schema.Types.ObjectId, ref: 'Category' },
-  organizer: { type: Schema.Types.ObjectId, ref: 'User' },
-})
+  imageUrl: { type: String, required: true },
+  eventURL: {
+      type: String,
+  },
+  eventName: {
+      type: String,
+      required: [true, 'Name is required!'],
+    },
+
+  creator: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  eventKey: {
+      type: String,
+      required: [true, 'Description is required!'],
+  },
+  eventEmail: {
+      type: String,
+      required: [true, 'Email is required!'],
+  },
+  eventFon: {
+    type: String,
+    required: [false, 'Email is required!'],
+},
+  createdAt: {
+      type: Date,
+      default: Date.now,
+  },
+  eventDescription: {
+      type: String,
+      required: [true, 'Description is required!'],
+  },
+  eventDate: {
+      type: String,
+      required: [false, 'Date is required!'],
+  },
+  startDateTime: { type: Date, default: Date.now },
+  endDateTime: { type: Date, default: Date.now },
+  eventAdress: {
+      type: String,
+      required: [false, 'Time is required!'],
+  },
+  eventFotoURL: {
+      type: String,
+      required: [false, 'Foto is not required!'],
+  },
+  eventWebsite: {
+      type: String,
+      required: [false, 'Foto is not required!'],
+  },
+  });
 
 const Event = models.Event || model('Event', EventSchema);
 

@@ -1,11 +1,13 @@
-import CheckoutButton from '@/components/shared/CheckoutButton';
-import Collection from '@/components/shared/Collection';
+//import CheckoutButton from '@/components/shared/CheckoutButton';
+//import Collection from '@/components/shared/Collection';
 import { getEventById, getRelatedEventsByCategory } from '@/lib/actions/event.actions'
 import { formatDateTime } from '@/lib/utils';
 import { SearchParamProps } from '@/types'
 import Image from 'next/image';
 
 const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) => {
+  console.log(id);
+
   const event = await getEventById(id);
 
   const relatedEvents = await getRelatedEventsByCategory({
@@ -17,7 +19,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
   return (
     <>
     <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
-      <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
+      <div className="grid grid-cols-1 p-5 md:grid-cols-2 2xl:max-w-7xl">
         <Image 
           src={event.imageUrl}
           alt="hero image"
@@ -28,7 +30,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
 
         <div className="flex w-full flex-col gap-8 p-5 md:p-10">
           <div className="flex flex-col gap-6">
-            <h2 className='h2-bold'>{event.title}</h2>
+            <h2 className='h2-bold'>{event.eventName}</h2>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex gap-3">
@@ -42,7 +44,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
 
               <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
                 by{' '}
-                <span className="text-primary-500">{event.organizer.firstName} {event.organizer.lastName}</span>
+                <span className="text-primary-500">{event.creator.firstName} - {event.creator.lastName}</span>
               </p>
             </div>
           </div>
@@ -58,22 +60,22 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
                   {formatDateTime(event.startDateTime).timeOnly}
                 </p>
                 <p>
-                  {formatDateTime(event.endDateTime).dateOnly} -  {' '}
+                  {"/ "+formatDateTime(event.endDateTime).dateOnly} -  {' '}
                   {formatDateTime(event.endDateTime).timeOnly}
                 </p>
               </div>
             </div>
 
-            <div className="p-regular-20 flex items-center gap-3">
+            <div className="p-regular-20 flex items-center p-5 gap-3">
               <Image src="/assets/icons/location.svg" alt="location" width={32} height={32} />
-              <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
+              <p className="p-medium-16 lg:p-regular-20">{event.eventAdress}</p>
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <p className="p-bold-20 text-grey-600">What You'll Learn:</p>
-            <p className="p-medium-16 lg:p-regular-18">{event.description}</p>
-            <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{event.url}</p>
+            <p className="p-medium-16 lg:p-regular-18">{event.eventDescription}</p>
+            <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{event.eventWebsite}</p>
           </div>
         </div>
       </div>

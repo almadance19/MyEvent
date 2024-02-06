@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from "@/components/ui/button"
 
 const PrintButton = () => {
   const handlePrint = () => {
@@ -7,8 +8,10 @@ const PrintButton = () => {
 
   return (
     <div>
-      <button className='btn btn-active btn-secondary' onClick={handlePrint}>Print Ticket</button>
-      {/* Your other page content */}
+      <Button variant="destructive" 
+      className="p-4"
+      onClick={handlePrint}>
+      Print Ticket</Button>
     </div>
   );
 };

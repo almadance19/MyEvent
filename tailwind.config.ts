@@ -17,6 +17,9 @@ module.exports = withUt({
         '2xl': '1400px',
       },
     },
+    daisyui: {
+      themes: ["light", "dark", "cupcake","business"],
+    },
     extend: {
       colors: {
         primary: {
@@ -97,5 +100,5 @@ module.exports = withUt({
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'),require("daisyui")],
 });

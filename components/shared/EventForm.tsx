@@ -114,11 +114,11 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="title"
+            name="eventName"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <Input placeholder="Event title" {...field} className="input-field" />
+                  <Input placeholder="Event Name" {...field} className="input-field" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -137,15 +137,68 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             )}
           />
         </div>
-
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="eventEmail"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input placeholder="Organiser Email" {...field} className="input-field" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+           {/* <FormField
+            control={form.control}
+            name="eventPhone"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input placeholder="Organiser Email" {...field} className="input-field" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          /> */}
+        </div>
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="eventKey"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input placeholder="Stripe Key" {...field} className="input-field" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        {/* <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="eventFon"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input placeholder="Event Phone" {...field} className="input-field" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>  */}
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
               control={form.control}
-              name="description"
+              name="eventDescription"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl className="h-72">
-                    <Textarea placeholder="Description" {...field} className="textarea rounded-2xl" />
+                    <Textarea placeholder="Event Description" {...field} className="textarea rounded-2xl" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -172,7 +225,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
               control={form.control}
-              name="location"
+              name="eventAdress"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
@@ -184,7 +237,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                         height={24}
                       />
 
-                      <Input placeholder="Event location or Online" {...field} className="input-field" />
+                      <Input placeholder="Event location" {...field} className="input-field" />
                     </div>
 
                   </FormControl>
@@ -302,7 +355,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             />   
            <FormField
               control={form.control}
-              name="url"
+              name="eventWebsite"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
@@ -314,7 +367,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                         height={24}
                       />
 
-                      <Input placeholder="URL" {...field} className="input-field" />
+                      <Input placeholder="Event Website" {...field} className="input-field" />
                     </div>
 
                   </FormControl>
