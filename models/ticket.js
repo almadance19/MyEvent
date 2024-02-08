@@ -15,6 +15,10 @@ const TicketSchema = new Schema({
       },
       eventOrganiserId: {
         type: String,
+        required: false,
+      },
+      eventId: {
+        type: String,
         required: true,
       },
     created_at: {

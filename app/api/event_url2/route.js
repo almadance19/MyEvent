@@ -77,6 +77,7 @@ export const POST = async (request) => {
                             name_ticket: stripeResponse["custom_fields"][0].text.value,
                             paystatus: stripeResponse["payment_status"],
                             ticket_type: stripeResponse["metadata"].Tickettype,
+                            Event_ID:stripeResponse["metadata"].Event,
                             address: `${stripeResponse["customer_details"]["address"].line1} ${stripeResponse["customer_details"]["address"].line2}, ${stripeResponse["customer_details"]["address"].postal_code} ${stripeResponse["customer_details"]["address"].city}, ${stripeResponse["customer_details"]["address"].country}`,
                             phone: `Phone= ${stripeResponse["customer_details"].phone}`,
                             currency: stripeResponse["currency"],
@@ -89,8 +90,8 @@ export const POST = async (request) => {
                           console.log(CheckoutData);
 
 
-                          if (CheckoutData) {
-                                console.log("CheckoutData exist");
+                          if (CheckoutData && CheckoutData.Event_ID === eventURL) {
+                                console.log("CheckoutData exist",CheckoutData.Event_ID);
                                   if (type === "org") {
                                     //CheckoutData.creator = creator;
                                   } else if (type === "buyer") {
@@ -110,7 +111,7 @@ export const POST = async (request) => {
                                 // check if user already exists
                                 const ticketExists = await Ticket.findOne({ ticket_id: id });
                                 // if not, create a new document and save user in MongoDB
-                                if (!ticketExists) {
+                                if (!ticketExists && CheckoutData.Event_ID === eventURL) {
                                     const creator = CheckoutData.creator;
                                     const eventURL = CheckoutData.eventURL;
                                     const eventName = CheckoutData.eventName;
@@ -132,12 +133,15 @@ export const POST = async (request) => {
                                     const address = CheckoutData.address;
                                     const phone = CheckoutData.phone;
                                     const currency = CheckoutData.currency;
+                                    const eventId = CheckoutData.Event_ID;
+                                    
 
                                     const newTicket = new Ticket({
                                         creator,
                                         eventURL,
                                         eventName,
                                         eventOrganiserId,
+                                        eventId,
                                         created_at,
                                         ticket_id,
                                         ticket_nr,
@@ -174,7 +178,7 @@ export const POST = async (request) => {
 
                           return new Response(JSON.stringify({ EventExists, CheckoutData }), { status: 201 });
                         } else {
-                            console.error('NO DATA STRIPE DATA VORHANDEN');
+                            console.error('NO DATA STRIPE DATA VORHANDEN OR WRONG EVENT URL');
                             return new Response(JSON.stringify("NO DATA STRIPE DATA"), { status: 201 });
                           } 
                         }
@@ -193,5 +197,3 @@ export const POST = async (request) => {
         return new Response("Failed to create a new prompt", { status: 500 });
     }
 }
-
-
