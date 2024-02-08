@@ -5,6 +5,9 @@ import { formatDateTime } from '@/lib/utils';
 import { SearchParamProps } from '@/types'
 import Image from 'next/image';
 import Link from 'next/link';
+import Collection from '@/components/shared/Collection';
+import { auth } from '@clerk/nextjs'
+import { Button } from "@/components/ui/button"
 
 const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) => {
   console.log(id);
@@ -16,6 +19,12 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
     eventId: event._id,
     page: searchParams.page as string,
   })
+
+  const { userId } = auth();
+  const userIdAsString: string = userId as string;
+  const isEventCreator = userIdAsString === event.creator.clerkId;
+  console.log(isEventCreator,userIdAsString,event.creator.clerkId)
+
 
   return (
     <>
@@ -81,6 +90,24 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
             <Image src="/assets/icons/link.svg" alt="calendar" width={32} height={32} />
             <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{event.eventWebsite}</p>
           </div>
+          {isEventCreator && (
+        <div className="flex flex-col gap-2">
+          <Link href={`/events/${event._id}/individual_tickets?eventid=${event._id}&userid=${userIdAsString}`}>
+            <Button 
+            variant="default" 
+          > 
+            Show & Edit Individual Tickets
+          </Button>
+          </Link>
+          <Link href={`/events/${event._id}/ticket_sales?eventid=${event._id}&userid=${userIdAsString}`}>
+            <Button 
+            variant="default" 
+          > 
+            Show all Tickets
+          </Button>
+          </Link>
+        </div>
+      )}
         </div>
       </div>
     </section>
@@ -89,7 +116,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
     <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
       <h2 className="h2-bold">Related Events</h2>
 
-      {/* <Collection 
+      <Collection 
           data={relatedEvents?.data}
           emptyTitle="No Events Found"
           emptyStateSubtext="Come back later"
@@ -97,7 +124,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
           limit={3}
           page={searchParams.page as string}
           totalPages={relatedEvents?.totalPages}
-        /> */}
+        />
     </section>
     </>
   )

@@ -86,12 +86,15 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
     }
 
     if(type === 'Update') {
+      console.log("update event: ",eventId)
       if(!eventId) {
         router.back()
         return;
       }
+      console.log("update event: ",eventId)
 
       try {
+        console.log("values",values)
         const updatedEvent = await updateEvent({
           userId,
           event: { ...values, imageUrl: uploadedImageUrl, _id: eventId },
