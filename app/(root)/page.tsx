@@ -27,7 +27,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
   return (
     <div>
-      <HeroVideo/>
+      {/* <HeroVideo/> */}
       <Hero/>
       <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold">Trust by <br /> the best Events</h2>
