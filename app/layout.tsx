@@ -13,8 +13,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Evently',
-  description: 'Evently is a platform for event management.',
+  title: 'My Dance Ticket',
+  description: "Save and Post your Event Tickets",
   icons: {
     icon: '/assets/images/logo.svg'
   }
@@ -28,6 +28,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
+      <head>
+      <meta charSet='utf-8' />
+      <meta name='viewport' content='width=device-width, initial-scale=1' />
+      <link rel='icon' href='/favicon.ico' />
+      <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+      </head>
       <body className={poppins.variable}>{children}</body>
     </html>
     </ClerkProvider>

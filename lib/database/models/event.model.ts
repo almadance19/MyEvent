@@ -3,7 +3,7 @@ import { Document, Schema, model, models } from "mongoose";
 export interface IEvent extends Document {
   _id: string;
   category: { _id: string, name: string }
-  creator: { _id: string, firstName: string, lastName: string }
+  creator: { _id: string, firstName: string, lastName: string , clerkId: string }
   price: string;
   isFree: boolean;
   imageUrl: string;

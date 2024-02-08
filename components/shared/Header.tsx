@@ -11,11 +11,12 @@ const Header = () => {
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
           <Image 
-            src="/assets/images/logo.svg" width={128} height={38}
+            src="/assets/images/logo.svg" width={55} height={30}
             alt="Evently logo" 
           />
+          <h1 className="text-2xl font-bold leading-tight">My Ticket</h1> 
         </Link>
-
+        
         <SignedIn>
           <nav className="md:flex-between hidden w-full max-w-xs">
             <NavItems />
@@ -28,6 +29,10 @@ const Header = () => {
             <MobileNav />
           </SignedIn>
           <SignedOut>
+          <Link href="/become-a-partner" className="w-36">
+        <h1 className="flex-center p-medium-16 whitespace-nowrap">Become a Partner</h1> 
+        </Link>
+
             <Button asChild className="rounded-full" size="lg">
               <Link href="/sign-in">
                 Login

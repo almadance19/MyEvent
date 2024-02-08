@@ -27,8 +27,8 @@ const HeroVideo = () => {
       {/* Content overlay (add your content here) */}
       <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
         <div className="text-white text-center">
-          <h1 className="text-4xl font-bold mb-4">My Event</h1>
-          <p className="text-lg">Find the hottest dancing events around</p>
+          <h1 className="text-4xl font-bold mb-4">My Ticket</h1>
+          <p className="text-lg">Find Tickets for the hootest dancing events around</p>
         </div>
       </div>
     </div>

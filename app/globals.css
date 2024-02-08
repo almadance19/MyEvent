@@ -186,6 +186,15 @@ body {
     @apply text-[16px] font-normal leading-[24px];
   }
 
+  .prompt_card {
+    @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  }
+
+  .feed {
+    @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+  }
+  
+
   /* 14 */
   .p-semibold-14 {
     @apply text-[14px] font-semibold leading-[20px];

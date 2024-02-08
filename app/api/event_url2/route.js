@@ -1,7 +1,7 @@
 import Event from "@/models/event";
 import { Stripe } from 'stripe';
 import Ticket from "@/models/ticket";
-import { connectToDB } from "@/utils/database";
+import { connectToDatabase } from '@/lib/database'
 
 export const POST = async (request) => {
 
@@ -11,7 +11,8 @@ export const POST = async (request) => {
     console.log("TYPE:",type);
 
     try {
-        await connectToDB();
+        // connect to the database
+        await connectToDatabase();
         // check if user already exists
 
         let EventExists = await Event.findOne({ _id: eventURL });
