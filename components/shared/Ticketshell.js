@@ -46,22 +46,22 @@ const Ticketshell = ({userId}) => {
 
   console.log(id," ",event," ",type," ",userId);
 
-  useEffect(() => {
-    if (userId) {
-      handleSendToApi();
+  // useEffect(() => {
+  //   if (userId) {
+  //     handleSendToApi();
 
-    } else {
-      handleSendToApi();
-      // const decision = window.confirm('Do you want to save your Ticket here:\n\n OK: Sign in and Save Ticket in the Page \n Cancel: Print Ticket without Signing In.');
-      // if (decision) {
-      //   console.log('User chose to sign in.');
-      //   router.push('/sign-in');
-      // } else {
-      //   console.log('User chose not to sign in.');
-      // }
-    }
+  //   } else {
+  //     handleSendToApi();
+  //     // const decision = window.confirm('Do you want to save your Ticket here:\n\n OK: Sign in and Save Ticket in the Page \n Cancel: Print Ticket without Signing In.');
+  //     // if (decision) {
+  //     //   console.log('User chose to sign in.');
+  //     //   router.push('/sign-in');
+  //     // } else {
+  //     //   console.log('User chose not to sign in.');
+  //     // }
+  //   }
   
-  }, [userId]);
+  // }, [userId]);
 
 
 //   useEffect(() => {

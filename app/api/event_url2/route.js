@@ -64,10 +64,11 @@ export const POST = async (request) => {
                         var total = (pre_total).toFixed(2);
                         var pre_mwst = (total/1.19)*.19 ;
                         var mwst = (pre_mwst).toFixed(2);
+                        var today = new Date();
 
                   
                         let CheckoutData = {
-                            created_at: Date.now,
+                            created_at: today,
                             ticket_id: id,
                             ticket_nr: id.slice(-10),
                             email: stripeResponse["customer_details"].email,
@@ -126,7 +127,7 @@ export const POST = async (request) => {
                                     const eventURL = CheckoutData.eventURL;
                                     const eventName = CheckoutData.eventName;
                                     const eventOrganiserId = CheckoutData.eventOrganiserId;
-                                    const created_at = Date.now;
+                                    const created_at = today;
                                     const ticket_id = CheckoutData.ticket_id;
                                     const ticket_nr = CheckoutData.ticket_nr;
                                     const email = CheckoutData.email;

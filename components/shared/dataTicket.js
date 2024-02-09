@@ -109,22 +109,16 @@ export default function FormDataDisplay({data}) {
   <h1 className="text-4xl font-bold mb-4 ml-4">{data.EventExists.eventName}</h1>
   </div>
   <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
-    <Image
-                          src="/assets/icons/location-grey.svg"
-                          alt="calendar"
-                          width={24}
-                          height={24}
-                        />
-    <p className="mb-4 ml-4">{data.EventExists.eventAdress}</p>
+    <p className="mb-4 ml-4"><strong>Address: </strong>{data.EventExists.eventAdress}</p>
   </div>
   <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
-  <p className=" mb-4 ml-4">Website: {data.EventExists.eventWebsite}</p>
+  <p className=" mb-4 ml-4"><strong>Website: </strong>{data.EventExists.eventWebsite}</p>
   </div>
   <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
-  <p className=" mb-4 ml-4">Phone: {data.EventExists.eventWebsite}</p>
+  <p className=" mb-4 ml-4"><strong>Phone: </strong>{data.EventExists.eventWebsite}</p>
   </div>
   <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
-  <p className=" mb-4 ml-4">Details: {data.EventExists.eventDescription}</p>
+  <p className=" mb-4 ml-4"><strong>Details: </strong>{data.EventExists.eventDescription}</p>
   <br />
   </div>
   <div className='flex gap-2 md:gap-3 m-4'>
