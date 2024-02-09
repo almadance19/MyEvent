@@ -149,7 +149,7 @@ const Ticketshell = ({userId}) => {
 
 
   return (
-    <div className="container mx-auto p-4 m-4 bg-cover bg-center py-5 md:py-10">
+    <div className="container mx-auto p-2 m-4 bg-cover bg-center py-5 md:py-10">
       <Head>
         <title>Ticket System</title>
       </Head>

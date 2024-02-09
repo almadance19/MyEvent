@@ -80,8 +80,8 @@ export default function FormDataDisplay({data}) {
   return (
     <>
 
-  <div id="printableContent" className="container border m-3 mx-auto p-4">
-  <form className="bg-white border border-gray-300 p-4 rounded-md m-4">
+  <div id="printableContent" className="container m-3 p-1">
+  <form className="bg-white border-gray-300 p-2 rounded-md m-4">
   <div className='content-justify-center items-center flex flex-col gap-5'>
   {data.EventExists.imageUrl !== undefined ? (
     <Image
