@@ -1,10 +1,13 @@
 "use client"
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from 'react';    
-import CsvTable from '@/components/shared/TicketTable';
+//import Collection from '@/components/shared/CollectionTicket';
+import Collection from "@/components/shared/CollectionTicket";
 
 export default function Page() {
     const [allCSVData, setallCSVData] = useState(null);
+    const [the_user, setUser] = useState(null);
+    const [the_event, setEvent] = useState(null);
 
     const searchParams = useSearchParams();
     const id = searchParams.get("eventid");   
@@ -27,8 +30,11 @@ export default function Page() {
             eventid: id,
           };
           const event_ticket_data = await fetchURL(body);
-          setallCSVData(event_ticket_data);
-  
+          setallCSVData(event_ticket_data.prompts);
+          setUser(event_ticket_data.organizerId);
+          //setUser(userId);
+          setEvent(id);
+
 
 
         } else {
@@ -62,15 +68,33 @@ export default function Page() {
       }
   };
 
-    return (
-        <div>
-
-        {allCSVData ? (
-            <CsvTable data={allCSVData} />
-        ) : (
-            <p className="text-gray-500"></p>
-        )}
-        </div>
-    );
+  return (
+    <div>
+    {allCSVData ? (
+        <>
+        <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+        <h2 className="h2-bold">Individual Tickets</h2>
+        <Collection 
+     data={allCSVData}
+     emptyTitle="No Events Found"
+     emptyStateSubtext="Come back later"
+     collectionType="All_Events"
+     limit={3}
+     page={searchParams.page}
+    totalPages={1}
+    userId={the_user}
+    EventId={the_event}
+     />
+  
+      </section>
+      </>
+    ) : (
+        <p className="text-gray-500"></p>
+    )}
+    </div>
+);
     }
 
+
+
+    

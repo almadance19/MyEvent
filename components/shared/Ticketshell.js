@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import PrintButton from "@/components/shared/PrintPage";
 import { Button } from "@/components/ui/button"
 //import EditFormDataDisplay from "@components/editTicket";
+import { useRouter } from "next/navigation";
 
 
 /// GET STRIPE ID FROM METADATA
@@ -35,6 +36,8 @@ const Ticketshell = ({userId}) => {
   const [apiResponse2, setApiResponse2] = useState(null);
   const [editButton, setEditButton] = useState(null);
 
+  const router = useRouter();
+
 
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
@@ -43,6 +46,22 @@ const Ticketshell = ({userId}) => {
 
   console.log(id," ",event," ",type," ",userId);
 
+  useEffect(() => {
+    if (userId) {
+      handleSendToApi();
+
+    } else {
+      handleSendToApi();
+      // const decision = window.confirm('Do you want to save your Ticket here:\n\n OK: Sign in and Save Ticket in the Page \n Cancel: Print Ticket without Signing In.');
+      // if (decision) {
+      //   console.log('User chose to sign in.');
+      //   router.push('/sign-in');
+      // } else {
+      //   console.log('User chose not to sign in.');
+      // }
+    }
+  
+  }, [userId]);
 
 
 //   useEffect(() => {
@@ -80,8 +99,8 @@ const Ticketshell = ({userId}) => {
              
             const data2 = await response2.json();
      
-
-            if (userId == data2.CheckoutData.eventOrganiserId ) {
+            console.log('TEST ORGANISER IS USER',userId,data2.EventExists.creator.clerkId);
+            if (userId == data2.EventExists.creator.clerkId ) {
               console.log('ORGANISER TICKET');
               setApiResponse2("Edit");
             }
@@ -142,6 +161,7 @@ const Ticketshell = ({userId}) => {
           </p>
           {!buttonClicked && (
           <Button 
+            className="m-4"
             variant="" 
             onClick={handleSendToApi}
           > 
@@ -151,12 +171,14 @@ const Ticketshell = ({userId}) => {
           {apiResponse2 && (
             <>
                   <Button 
-                  variant="" 
+                  variant=""
+                  className="m-4" 
                 onClick={handleEdit}
                 > 
             Edit Ticket
           </Button> 
-          <Button variant="destructive" 
+          <Button variant="default"
+            className="m-4"
             onClick={handleSendToApi}>
             Check In
           </Button> 
@@ -173,6 +195,7 @@ const Ticketshell = ({userId}) => {
           </p>
           {!buttonClicked && (
           <Button variant="" 
+            className="m-4"
             onClick={handleSendToApi}
           > 
             Open Ticket
@@ -208,6 +231,7 @@ const Ticketshell = ({userId}) => {
           {!buttonClicked && (
           <Button 
             variant="" 
+            className="m-4"
             onClick={handleSendToApi}
           > 
             Show & Open Ticket

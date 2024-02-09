@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { DeleteConfirmation } from './DeleteConfirmation'
+import { Button } from '@/components/ui/button'
 
 type CardProps = {
   event: IEvent,
@@ -76,6 +77,11 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
         <div className="flex-between w-full">
         <Link href={`${event.eventWebsite}`}>
           <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">{event.eventWebsite}</p>
+        </Link>
+        </div>
+        <div className="flex-between w-full">
+        <Link href={`/events/${event._id}`}>
+          <Button variant="default">See Event Details</Button>
         </Link>
         </div>
       </div>

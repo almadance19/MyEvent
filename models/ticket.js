@@ -89,6 +89,10 @@ const TicketSchema = new Schema({
       type: String,
       required: true,
     },
+    checked_in: {
+      type: Boolean,
+      required: false,
+    },
   });
   
   

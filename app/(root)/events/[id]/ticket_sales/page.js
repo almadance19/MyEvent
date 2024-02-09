@@ -27,7 +27,7 @@ export default function Page() {
             eventid: id,
           };
           const event_ticket_data = await fetchURL(body);
-          setallCSVData(event_ticket_data);
+          setallCSVData(event_ticket_data.prompts);
   
 
 

@@ -38,7 +38,8 @@ export default function FormDataDisplay({data}) {
       //CREATE GET REQUEST TO GOOGLE SHEET API
       // Add EMAIL, LINK, NAME, EVENTNAME and send it as Parameters
       //let google_string= `${URL}?eventURL=${eventURL}&ticket_id=${ticket_id}&email=${email}`;
-          const URL = "https://script.google.com/macros/s/AKfycbyFmNvafsmVqbRyvpESJRe4XLMd24TFOEdn7tDAagixS0WOM6ZLoQ8MKB_fh7Wku-Q/exec";        
+          const URL = "https://script.google.com/macros/s/AKfycbxSQgm_jx1vGCTeSeV2SxN46V-3skyWJ5HFock3MehY_qR45EA0si5ukUBwug-k4JYvpQ/exec";
+          
           const eventURL = data.CheckoutData.eventURL;
           const eventName = data.CheckoutData.eventName;
           const ticket_id = data.CheckoutData.ticket_id;
@@ -48,7 +49,10 @@ export default function FormDataDisplay({data}) {
           const name_ticket = data.CheckoutData.name_ticket;
           const ticket_type = data.CheckoutData.ticket_type;
           const pre_total = data.CheckoutData.pre_total;
-          let google_string= `${URL}?eventURL=${eventURL}&eventName=${eventName}&ticket_id=${ticket_id}&ticket_nr=${ticket_nr}&email=${email}&name_payment=${name_payment}&name_ticket=${name_ticket}&ticket_type=${ticket_type}&pre_total=${pre_total}`;
+          const organizer_email = data.EventExists.eventEmail;
+
+
+          let google_string= `${URL}?eventURL=${eventURL}&eventName=${eventName}&ticket_id=${ticket_id}&ticket_nr=${ticket_nr}&email=${email}&organizer_email=${organizer_email}&name_ticket=${name_ticket}&ticket_type=${ticket_type}&pre_total=${pre_total}`;
           
             console.log('Sending email...',google_string);
             const response = await fetch(google_string);

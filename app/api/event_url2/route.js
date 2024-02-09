@@ -15,7 +15,8 @@ export const POST = async (request) => {
         await connectToDatabase();
         // check if user already exists
 
-        let EventExists = await Event.findOne({ _id: eventURL });
+        let EventExists = await Event.findOne({ _id: eventURL })
+        ;
 
         // const EventExists = await Event.findOne({ eventURL: eventURL }).select({
         //     eventName: 1, // Exclude
@@ -83,7 +84,7 @@ export const POST = async (request) => {
                             currency: stripeResponse["currency"],
                           };
         
-                          EventExists = await Event.findOne({ _id: eventURL }).select({
+                          EventExists = await Event.findOne({ _id: eventURL }).populate('creator').select({
                             eventKey: 0, // Exclude
                              });
                   
@@ -134,6 +135,7 @@ export const POST = async (request) => {
                                     const phone = CheckoutData.phone;
                                     const currency = CheckoutData.currency;
                                     const eventId = CheckoutData.Event_ID;
+                                    const checked_in = false;
                                     
 
                                     const newTicket = new Ticket({
@@ -158,7 +160,9 @@ export const POST = async (request) => {
                                         ticket_type,
                                         address,
                                         phone,
-                                        currency});
+                                        currency,
+                                        checked_in
+                                    });
                                     await newTicket.save();
                                     
                                     console.log("Ticket saved");
