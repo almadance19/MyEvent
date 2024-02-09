@@ -27,7 +27,7 @@ export const POST = async (request) => {
         //   });
 
         if (!EventExists) {
-            consonle.log("Event does not Exists");
+            console.log("Event does not Exists");
             
             return new Response(JSON.stringify("URL DOES NOT EXISTS OR IS WRONG"), { status: 201 })
 
@@ -197,7 +197,7 @@ export const POST = async (request) => {
 
         }
     } catch (error) {
-        console.log("ERROR");
+        console.log("ERROR IN API",error);
         return new Response("Failed to create a new prompt", { status: 500 });
     }
 }

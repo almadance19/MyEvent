@@ -39,7 +39,7 @@ export default function FormDataDisplay({data}) {
       // Add EMAIL, LINK, NAME, EVENTNAME and send it as Parameters
       //let google_string= `${URL}?eventURL=${eventURL}&ticket_id=${ticket_id}&email=${email}`;
           const URL = "https://script.google.com/macros/s/AKfycbxSQgm_jx1vGCTeSeV2SxN46V-3skyWJ5HFock3MehY_qR45EA0si5ukUBwug-k4JYvpQ/exec";
-          
+
           const eventURL = data.CheckoutData.eventURL;
           const eventName = data.CheckoutData.eventName;
           const ticket_id = data.CheckoutData.ticket_id;
@@ -152,7 +152,8 @@ export default function FormDataDisplay({data}) {
   <div className='content-justify-center items-center m-4 gap-5'>
   <div className="mb-4 ml-4 ">
   <label className="block text-gray-600 mb-2 font-bold">Payment Date</label>
-  <p className="text-gray-800">{formatDate(data.CheckoutData.created_at)}</p>
+  <p className="text-gray-800">{formatDateTime(data.CheckoutData.created_at).dateOnly} - {' '}
+                  {formatDateTime(data.CheckoutData.created_at).timeOnly}</p>
 </div>
 <div className="mb-4 ml-4">
   <label className="block text-gray-600 mb-2 font-bold">Email ID</label>
