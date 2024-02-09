@@ -31,7 +31,8 @@ export type CreateEventParams = {
   endDateTime: Date;
   eventAdress: string;
   eventWebsite: string;
-  categoryId: string
+  categoryId: string;
+  active: boolean
   }
   path: string
 }
@@ -52,7 +53,8 @@ export type UpdateEventParams = {
   endDateTime: Date;
   eventAdress: string;
   eventWebsite: string;
-  categoryId: string
+  categoryId: string;
+  active: boolean
   }
   path: string
 }

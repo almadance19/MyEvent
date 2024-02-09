@@ -14,5 +14,6 @@ export const eventFormSchema = z.object({
   eventWebsite: z.string(),
   eventKey: z.string(),
   createdAt: z.date(),
+  active: z.boolean(),
 //  eventFon: z.string(),
 })

@@ -16,6 +16,7 @@ export interface IEvent extends Document {
   endDateTime: Date;
   eventAdress: string;
   eventWebsite: string;
+  active: boolean;
 }
 
 
@@ -59,6 +60,10 @@ const EventSchema = new Schema({
       type: String,
       required: [false, 'Foto is not required!'],
   },
+  active: {
+    type: Boolean,
+    required: [false, 'Foto is not required!'],
+},
   });
 
 const Event = models.Event || model('Event', EventSchema);

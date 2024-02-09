@@ -33,4 +33,5 @@ export const eventDefaultValues = {
   eventAdress: '',
   eventFotoURL: '',
   eventWebsite: '',
+  active: false,
 }

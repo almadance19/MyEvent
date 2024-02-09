@@ -37,10 +37,11 @@ export const POST = async (request) => {
       
             let OrganiserId = EventExists.creator;
             let eventKey = EventExists.eventKey;
+            let eventActive = EventExists.active;
             console.log("Event Key",eventKey);
 
-            if (!eventKey) {
-                console.log("Event Key does not exist");
+            if (!eventKey || eventActive === false) {
+                console.log("Event Key does not exist or Event is not active");
                 return new Response(JSON.stringify("NO KEY IN SYSTEM"), { status: 201 })
             } else {
                 console.log("Event Key exist");
