@@ -1,7 +1,9 @@
-import Event from "@/models/event";
+//import Event from "@/models/event";
 import { Stripe } from 'stripe';
 import Ticket from "@/models/ticket";
 import { connectToDatabase } from '@/lib/database'
+import User from '@/lib/database/models/user.model'
+import Event from '@/lib/database/models/event.model'
 
 export const POST = async (request) => {
 
@@ -61,9 +63,10 @@ export const POST = async (request) => {
                         var total = (pre_total).toFixed(2);
                         var pre_mwst = (total/1.19)*.19 ;
                         var mwst = (pre_mwst).toFixed(2);
+
                   
                         let CheckoutData = {
-                            created_at: stripeResponse["created"],
+                            created_at: Number(stripeResponse["created"]),
                             ticket_id: id,
                             ticket_nr: id.slice(-10),
                             email: stripeResponse["customer_details"].email,
@@ -83,12 +86,17 @@ export const POST = async (request) => {
                             phone: `Phone= ${stripeResponse["customer_details"].phone}`,
                             currency: stripeResponse["currency"],
                           };
+
+                          console.log(CheckoutData);
         
-                          EventExists = await Event.findOne({ _id: eventURL }).populate('creator').select({
+                           EventExists = await Event.findOne({ _id: eventURL }).populate('creator').select({
                             eventKey: 0, // Exclude
                              });
+
+                       // EventExists = await Event.findOne({ _id: eventURL }).select({
+                       //         eventKey: 0, // Exclude
+                       //          });
                   
-                          console.log(CheckoutData);
 
 
                           if (CheckoutData && CheckoutData.Event_ID === eventURL) {
