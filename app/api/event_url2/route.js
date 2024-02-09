@@ -67,7 +67,7 @@ export const POST = async (request) => {
 
                   
                         let CheckoutData = {
-                            created_at: Number(stripeResponse["created"]),
+                            created_at: Date.now,
                             ticket_id: id,
                             ticket_nr: id.slice(-10),
                             email: stripeResponse["customer_details"].email,
@@ -126,7 +126,7 @@ export const POST = async (request) => {
                                     const eventURL = CheckoutData.eventURL;
                                     const eventName = CheckoutData.eventName;
                                     const eventOrganiserId = CheckoutData.eventOrganiserId;
-                                    const created_at = CheckoutData.created_at;
+                                    const created_at = Date.now;
                                     const ticket_id = CheckoutData.ticket_id;
                                     const ticket_nr = CheckoutData.ticket_nr;
                                     const email = CheckoutData.email;
