@@ -38,8 +38,7 @@ export default function FormDataDisplay({data}) {
       //CREATE GET REQUEST TO GOOGLE SHEET API
       // Add EMAIL, LINK, NAME, EVENTNAME and send it as Parameters
       //let google_string= `${URL}?eventURL=${eventURL}&ticket_id=${ticket_id}&email=${email}`;
-          const URL = "https://script.google.com/macros/s/AKfycbxSQgm_jx1vGCTeSeV2SxN46V-3skyWJ5HFock3MehY_qR45EA0si5ukUBwug-k4JYvpQ/exec";
-
+          const URL = "https://script.google.com/macros/s/AKfycbzt_sj92Be1f94SkasynDZmEsHeNoibQ62EpPaJLVd92BIhvXec-q8vAaJIjT_gK4I9OQ/exec";
           const eventURL = data.CheckoutData.eventURL;
           const eventName = data.CheckoutData.eventName;
           const ticket_id = data.CheckoutData.ticket_id;
