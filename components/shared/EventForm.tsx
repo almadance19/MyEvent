@@ -323,13 +323,13 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                   <FormControl>
                     <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                       <Image
-                        src="/assets/icons/dollar.svg"
+                        src="/assets/icons/search.svg"
                         alt="dollar"
                         width={24}
                         height={24}
                         className="filter-grey"
                       />
-                      <Input type="number" placeholder="Price range" {...field} className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
+                      <Input type="number" placeholder="Phone Number" {...field} className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
                       <FormField
                         control={form.control}
                         name="isFree"

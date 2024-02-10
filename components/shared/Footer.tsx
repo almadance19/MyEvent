@@ -27,7 +27,7 @@ const Footer = () => {
           className='object-contain'
         />
          <p className="font-bold">
-          My Ticket. <br/>Save and Post your Event Tickets
+          My Ticket. <br/>Save your event tickets here
          </p> 
           <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
      </aside> 
