@@ -15,7 +15,7 @@ const PartnersPage = () => {
           </div>
 
           <Image 
-            src="/assets/images/hero.png"
+            src="/assets/images/hero1.png"
             alt="hero"
             width={1000}
             height={1000}
