@@ -173,7 +173,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <Input placeholder="Stripe Key" {...field} className="input-field" />
+                  <Input placeholder="Key" {...field} className="input-field" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
