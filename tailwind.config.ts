@@ -3,6 +3,7 @@ import { withUt } from 'uploadthing/tw';
 
 module.exports = withUt({
 
+ 
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -18,7 +19,7 @@ module.exports = withUt({
       },
     },
     daisyui: {
-      themes: ["light", "dark", "cupcake","business"],
+      themes: ["light", "cupcake","business"],
     },
     extend: {
       colors: {

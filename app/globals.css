@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --background-color: #ffffff;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -33,6 +34,12 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      color-scheme: light;
+    }
   }
 
   /* .dark {
@@ -74,7 +81,8 @@
 }
 
 body {
-  font-family: var(--font-poppins)
+  font-family: var(--font-poppins);
+  
 }
 
 .filter-grey {
