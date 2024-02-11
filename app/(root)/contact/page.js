@@ -11,7 +11,7 @@ const PartnersPage = () => {
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Welcome to My Dance Event!</h1>
-            <p className="p-regular-20 md:p-regular-24">We are not sellers or organizers and we don't receive any money from event attendees. . We only provide a platform for Ticket creation and Event promotion.</p>
+            <p className="p-regular-20 md:p-regular-24">We are not sellers or organizers and we don't receive any money from event attendees. We only provide a platform for Ticket creation and Event promotion.</p>
           </div>
 
           <Image 

@@ -8,8 +8,8 @@ const Footer = () => {
   <nav className="grid grid-flow-col gap-4">
     <Link href='/become-a-partner' >Become a Partner</Link>
     <Link href='/contact' >Contact</Link>
-    {/* <Link href='/' >FAQS</Link> */}
-    <Link href='/' >Impressum/Privacy</Link>
+    <Link href='/impressum' >Impressum</Link>
+    <Link href='/privacy' >Privacy</Link>
   </nav> 
   <nav>
     <div className="grid grid-flow-col gap-4 text-indigo-800 ">
@@ -29,7 +29,7 @@ const Footer = () => {
          <p className="font-bold">
           My Event Ticket <br/>Save your event tickets here
          </p> 
-          <p>Alma Dance Frankfurt © {new Date().getFullYear()} - All right reserved</p>
+          <p>Alma Dance Frankfurt © {new Date().getFullYear()} </p>
      </aside> 
 </footer>
   )
