@@ -87,8 +87,14 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
             <p className="p-bold-20 text-grey-600">Details:</p>
             <p className="p-medium-16 lg:p-regular-18">{event.eventDescription}</p>
             <p className="p-bold-20 text-grey-600">Website:</p>
-            <Image src="/assets/icons/link.svg" alt="calendar" width={32} height={32} />
+            {/* <Image src="/assets/icons/link.svg" alt="calendar" width={32} height={32} /> */}
+            <Link href={`${event.eventWebsite}`}>
             <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{event.eventWebsite}</p>
+            </Link>
+            <p className="p-bold-20 text-grey-600">Organizer Email:</p>
+            <p className="p-medium-16 lg:p-regular-18">{event.eventEmail}</p>
+            <p className="p-bold-20 text-grey-600">Organizer Phone:</p>
+            <p className="p-medium-16 lg:p-regular-18">{event.price}</p>
           </div>
           {isEventCreator && (
         <div className="flex flex-col gap-2">

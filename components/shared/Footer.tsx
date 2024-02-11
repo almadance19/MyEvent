@@ -6,9 +6,9 @@ const Footer = () => {
     <footer className="footer footer-center p-10 rounded">
             
   <nav className="grid grid-flow-col gap-4">
-    <Link href='/' >About us</Link>
-    <Link href='/' >Contact</Link>
-    <Link href='/' >FAQS</Link>
+    <Link href='/become-a-partner' >Become a Partner</Link>
+    <Link href='/contact' >Contact</Link>
+    {/* <Link href='/' >FAQS</Link> */}
     <Link href='/' >Impressum/Privacy</Link>
   </nav> 
   <nav>
@@ -27,9 +27,9 @@ const Footer = () => {
           className='object-contain'
         />
          <p className="font-bold">
-          My Ticket. <br/>Save your event tickets here
+          My Event Ticket <br/>Save your event tickets here
          </p> 
-          <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+          <p>Alma Dance Frankfurt © {new Date().getFullYear()} - All right reserved</p>
      </aside> 
 </footer>
   )

@@ -71,7 +71,13 @@ export default function FormDataDisplay({data}) {
   };
 
   const handleEmailClick = async () => {
-    await handleSendEmail();
+    const confirmed = window.confirm("Do you agree to receive Emails from us?");
+    if (confirmed) {
+      // Handle send Email
+      await handleSendEmail();
+    } else {
+      // Handle the cancellation or do nothing
+    }
   };
 
  
@@ -114,7 +120,10 @@ export default function FormDataDisplay({data}) {
   <p className=" mb-4 ml-4"><strong>Website: </strong>{data.EventExists.eventWebsite}</p>
   </div>
   <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
-  <p className=" mb-4 ml-4"><strong>Phone: </strong>{data.EventExists.eventWebsite}</p>
+  <p className=" mb-4 ml-4"><strong>Phone: </strong>{data.EventExists.price}</p>
+  </div>
+  <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
+  <p className=" mb-4 ml-4"><strong>Email: </strong>{data.EventExists.eventEmail}</p>
   </div>
   <div className='p-medium-16 lg:p-regular-20 flex flex-wrap items-center m-4'>
   <p className=" mb-4 ml-4"><strong>Details: </strong>{data.EventExists.eventDescription}</p>
