@@ -45,6 +45,7 @@ export const POST = async (request) => {
                 return new Response(JSON.stringify("NO KEY IN SYSTEM"), { status: 201 })
             } else {
                 console.log("Event Key exist");
+                console.log(EventExists);
 
                 let TicketExists = await Ticket.findOne({ ticket_id: id });
 
@@ -116,7 +117,7 @@ export const POST = async (request) => {
                         
                                   CheckoutData.eventURL = eventURL ;
                                   CheckoutData.eventName = EventExists.eventName ;
-                                  CheckoutData.eventOrganiserId = EventExists.creator ;
+                                  CheckoutData.eventOrganiserId = EventExists.creator._id ;
                                   ///
     
             
