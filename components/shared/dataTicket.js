@@ -184,7 +184,7 @@ export default function FormDataDisplay({data}) {
 </div>
           <br />
           <div className="content-justify-center items-center flex flex-col gap-5 mb-4">
-    <QRCode value={`https://firstnextjs-wine.vercel.app/ticket?event=${data.CheckoutData.eventURL}&id=${data.CheckoutData.ticket_id}&type=org`} size={200} />
+    <QRCode value={`https://bachata-salsa-online.eu/ticket?event=${data.CheckoutData.eventURL}&id=${data.CheckoutData.ticket_id}&type=org`} size={200} />
   </div>
   </form>
   </div>  
