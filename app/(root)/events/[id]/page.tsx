@@ -112,6 +112,13 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
             Show all Tickets
           </Button>
           </Link>
+          <Link href={`/events/${event._id}/create_ticket?eventid=${event._id}&userid=${event.creator._id}&eventName=${event.eventName}`}>
+            <Button 
+            variant="default" 
+          > 
+            Create Ticket
+          </Button>
+          </Link>
         </div>
       )}
         </div>
