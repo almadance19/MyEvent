@@ -83,7 +83,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           value={formData.ticket_id}
           onChange={handleChange}
           readOnly={true}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -98,7 +98,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           value={formData.ticket_nr}
           onChange={handleChange}
           readOnly={true}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -112,7 +112,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -126,7 +126,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="name_payment"
           value={formData.name_payment}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -140,7 +140,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="total"
           value={formData.total}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -154,7 +154,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="currency"
           value={formData.currency}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -168,7 +168,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="paystatus"
           value={formData.paystatus}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -182,7 +182,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="ticket_type"
           value={formData.ticket_type}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -196,7 +196,7 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
@@ -210,14 +210,15 @@ const TicketForm = ({eventURL,eventName,eventOrganiserId}) => {
           name="address"
           value={formData.address}
           onChange={handleChange}
-            className="w-full mt-1"
+              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
           />
       </label>
       </div>
         </div>
     <br />
       {/* Add other input fields for other form fields */}
-      <button type="submit" ><strong>CREATE TICKET</strong></button>
+      <button type="submit" ><strong><p className="bg-blue-600 text-gray-800 px-4 py-2 rounded-md cursor-pointer hover:bg-gray-400">CREATE TICKET</p>
+</strong></button>
     </div>
     </form>
     {successMessage && <p>{successMessage}</p>}
