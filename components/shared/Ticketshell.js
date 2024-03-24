@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button"
 //import EditFormDataDisplay from "@components/editTicket";
 import { useRouter } from "next/navigation";
 
+import Link from "next/link";
+
 
 /// GET STRIPE ID FROM METADATA
 /// GET STRIPE ID FROM METADATA
@@ -170,13 +172,14 @@ const Ticketshell = ({userId}) => {
           )}
           {apiResponse2 && (
             <>
-                  <Button 
-                  variant=""
-                  className="m-4" 
-                onClick={handleEdit}
-                > 
+          
+          <Link href={`/events/edit_ticket?eventid=${event}&ticketid=${id}&clerckid=${userId}&statusticket=${apiResponse.CheckoutData.paystatus}&eventName=${apiResponse.CheckoutData.eventName}&nameticket=${apiResponse.CheckoutData.name_ticket}&emailticket=${apiResponse.CheckoutData.email}&amountticket=${apiResponse.CheckoutData.pre_total}&typeticket=${apiResponse.CheckoutData.ticket_type}`}>
+            <Button 
+            variant="default" 
+          > 
             Edit Ticket
-          </Button> 
+          </Button>
+          </Link> 
           <Button variant="default"
             className="m-4"
             onClick={handleSendToApi}>

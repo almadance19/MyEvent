@@ -6,10 +6,15 @@ import { useSearchParams } from "next/navigation";
 const TicketForm = ({clerckAuth}) => {
   const searchParams = useSearchParams();
     const eventURL = searchParams.get("eventid");   
-    const eventOrganiserId = searchParams.get("userid");
-    const eventName = searchParams.get("eventName");  
+    const nameticket = searchParams.get("nameticket");
+    const eventName = searchParams.get("eventName");
+    const emailticket = searchParams.get("emailticket");
+    const amountticket = searchParams.get("amountticket");
+    const typeticket = searchParams.get("typeticket");
+    const ticketId = searchParams.get("ticketid");  
     const eventclerckid = searchParams.get("clerckid");
     const isEventCreator = clerckAuth === eventclerckid;
+    const statusticket = searchParams.get("statusticket");
   
 
 
@@ -18,25 +23,25 @@ const TicketForm = ({clerckAuth}) => {
   const uniqueID2 =  'ticket_' + Date.now();
     
   const [formData, setFormData] = useState({
-    creator: eventOrganiserId,
+    creator: '',
     eventURL: eventURL,
     eventName: eventName,
-    eventOrganiserId: eventOrganiserId,
+    eventOrganiserId: '',
     eventId: eventURL,
     created_at: today,
-    ticket_id: uniqueID,
+    ticket_id: ticketId,
     ticket_nr: uniqueID2,
-    email: '',
-    name_payment: '',
-    pre_total: '',
-    total: '',
+    email: emailticket,
+    name_payment: nameticket,
+    pre_total: amountticket,
+    total: amountticket,
     pre_mwst: '',
     mwst: '',
     subtotal: '',
     amount_discount: '',
-    name_ticket: '',
-    paystatus: 'manual payment',
-    ticket_type: '',
+    name_ticket: nameticket,
+    paystatus: statusticket,
+    ticket_type: typeticket,
     address: '--',
     phone: '--',
     currency: 'EUR',
@@ -61,7 +66,7 @@ const TicketForm = ({clerckAuth}) => {
         return;
 
       } else {
-      const response = await fetch('/api/ticket/new_edit', {
+      const response = await fetch('/api/ticket/edit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,9 +74,9 @@ const TicketForm = ({clerckAuth}) => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        console.log('Ticket created successfully!');
+        console.log('Ticket updated successfully!');
         router.push(`/ticket?event=${formData.eventURL}&id=${formData.ticket_id}&type=org`)
-        setSuccessMessage('Ticket created successfully!');
+        setSuccessMessage('Ticket updated successfully!');
         
       } else {
         console.error('Failed to create ticket.');
@@ -105,21 +110,7 @@ const TicketForm = ({clerckAuth}) => {
       </label>
       </div>
         </div>
-        <div className="flex flex-col gap-5 md:flex-row">
-        <div className="col-span-full">
-       <label className="block"><strong>
-      Ticket Nr:
-        </strong><input
-          type="text"
-          name="ticket_nr"
-          value={formData.ticket_nr}
-          onChange={handleChange}
-          readOnly={true}
-              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
-          />
-      </label>
-      </div>
-        </div>
+
         <div className="flex flex-col gap-5 md:flex-row">
         <div className="col-span-full">
        <label className="block"><strong>
@@ -151,7 +142,7 @@ const TicketForm = ({clerckAuth}) => {
         <div className="flex flex-col gap-5 md:flex-row">
         <div className="col-span-full">
        <label className="block"><strong>
-      Payment Amount:
+      Payment Amount EUR:
         </strong><input
           type="number"
           name="total"
@@ -162,20 +153,7 @@ const TicketForm = ({clerckAuth}) => {
       </label>
       </div>
         </div>
-        <div className="flex flex-col gap-5 md:flex-row">
-        <div className="col-span-full">
-       <label className="block"><strong>
-      Currency:
-        </strong><input
-          type="text"
-          name="currency"
-          value={formData.currency}
-          onChange={handleChange}
-              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
-          />
-      </label>
-      </div>
-        </div>
+
         <div className="flex flex-col gap-5 md:flex-row">
         <div className="col-span-full">
        <label className="block"><strong>
@@ -204,37 +182,10 @@ const TicketForm = ({clerckAuth}) => {
       </label>
       </div>
         </div>
-        <div className="flex flex-col gap-5 md:flex-row">
-        <div className="col-span-full">
-       <label className="block"><strong>
-      Phone Nr:
-        </strong><input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
-          />
-      </label>
-      </div>
-        </div>
-        <div className="flex flex-col gap-5 md:flex-row">
-        <div className="col-span-full">
-       <label className="block"><strong>
-       Address:
-        </strong><input
-          type="text"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-              className="w-full mt-1 bg-gray-300 text-black border-gray-700 border px-4 py-2 rounded-md"
-          />
-      </label>
-      </div>
-        </div>
+
     <br />
       {/* Add other input fields for other form fields */}
-      <button type="submit" ><strong><p className="bg-blue-600 text-gray-800 px-4 py-2 rounded-md cursor-pointer hover:bg-gray-400">CREATE TICKET</p>
+      <button type="submit" ><strong><p className="bg-blue-600 text-gray-800 px-4 py-2 rounded-md cursor-pointer hover:bg-gray-400">EDIT TICKET</p>
 </strong></button>
     </div>
     </form>

@@ -51,7 +51,7 @@ const PartnersPage = () => {
       </Button>
       </div>
       <p className='desc text-left'>
-       Step 3: Contact us to activate your event and create your tickets with us! 
+       Step 3: Contact us to activate your event! 
       </p>
       <div className='primary-content py-4 my-2'>
       <a className='font-bold  desc text-left' href="tel:+491639641730">+49 163 9641730</a>

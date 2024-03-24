@@ -7,6 +7,7 @@ const Footer = () => {
             
   <nav className="grid grid-flow-col gap-4">
     <Link href='/become-a-partner' >Become a Partner</Link>
+    <Link href='/' >Events</Link>
     <Link href='/contact' >Contact</Link>
     <Link href='/impressum' >Impressum</Link>
     <Link href='/privacy' >Privacy</Link>

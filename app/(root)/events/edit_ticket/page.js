@@ -1,4 +1,4 @@
-import TicketForm from '@/components/shared/TicketForm';
+import TicketForm from '@/components/shared/TicketFormEdit';
 import { auth } from '@clerk/nextjs'
 
 export default function Page() {
@@ -11,7 +11,7 @@ export default function Page() {
     return (
           <>
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-        <h3 className="wrapper h3-bold text-center sm:text-left">Create Ticket</h3>
+        <h3 className="wrapper h3-bold text-center sm:text-left">Edit Ticket</h3>
       </section>
 
       <div className="wrapper my-8">
