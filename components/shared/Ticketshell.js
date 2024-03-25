@@ -137,13 +137,41 @@ const Ticketshell = ({userId}) => {
           type: type,
           creator: userId,
         };
-        // handleSendToApi();
-        setEditButton("Edit");
+
+
+         const fetchURL2 = async () => {
+           try {
+             console.log('Fetching URL...', event);
+             const response2 = await fetch("/api/ticket/checkin", 
+             {
+               method: "POST",
+               body: JSON.stringify(body),
+               headers: new Headers({ "Content-Type": "application/json" }),
+             });
+
+
+             if (!response2.ok) {
+               throw new Error(`Failed to fetch URL. Status: ${response2.status}`);
+             }
+             
+             const data3 = await response2.json();
+     
+             return data3;
+           } catch (error) {
+             console.error('Error fetching URL:', error);
+             throw error;
+           }
+         };
+         const event_ticket_data = await fetchURL2();
+         console.log('CHECKED IN TICKET',event_ticket_data);
+         alert(event_ticket_data);
+        
         setButtonClicked(true);
       }
     }
     catch (error) {
-      console.error('Error sending data to API:', error);
+      alert('Error with Ticket');
+      console.error('Error CheckinIN Ticket in API:', error);
     }
   }
 
@@ -182,7 +210,7 @@ const Ticketshell = ({userId}) => {
           </Link> 
           <Button variant="default"
             className="m-4"
-            onClick={handleSendToApi}>
+            onClick={handleEdit}>
             Check In
           </Button> 
             </>

@@ -90,7 +90,7 @@ const TicketForm = ({clerckAuth}) => {
   return (
     <div className="bg-white shadow sm:rounded-lg py-4 m-2">
     <h2 className="text-2xl font-semibold text-center">{eventName}</h2>
-    <p className="text-center text-gray-500">Fill in the form to create a ticket</p>
+    <p className="text-center text-gray-500">Fill in the form to edit a ticket</p>
     
     <form onSubmit={handleSubmit}>
     <  div className="">
